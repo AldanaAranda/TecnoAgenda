@@ -1,0 +1,126 @@
+/*LOGIN*/
+body{
+    background-image: url("../assets/images/fondo.jpeg") ;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg{
+    background-color: #1E1E1E;
+}
+
+.custom-input {
+    background-color: #333333;
+    border: 1px solid #424242;
+    color: #424242;
+}
+
+.custom-input::placeholder {
+    color: #424242;
+}
+
+.text-danger {
+    font-size: 0.875em;
+}
+
+/*ANIMACION*/
+.animate-from-left {
+    opacity: 0;
+    transform: translateX(-100%);
+    animation: slideInFromLeft 1s ease-out forwards;
+}
+
+.animate-from-right {
+    opacity: 0;
+    transform: translateX(100%);
+    animation: slideInFromRight 1s ease-out forwards;
+}
+
+@keyframes slideInFromLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromRight {
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/*HOME*/ 
+.navbar {
+    background-color: #162859; /* Fondo azul */
+}
+
+.navbar-brand {
+    color: white;
+    font-weight: bold;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand::before {
+    content: "●";
+    color: #3ABEFF;
+    font-size: 1.5rem;
+    margin-right: 8px;
+}
+
+.nav-link {
+    color: white;
+    font-size: 1rem;
+    margin-right: 20px;
+}
+
+.nav-link:hover {
+    color: #3ABEFF;
+}
+
+.search-wrapper {
+    position: relative;
+    width: 250px;
+}
+
+.form-control {
+    border-radius: 20px;
+    padding-right: 40px;
+}
+
+.search-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: #6c757d; /* Gris suave */
+}
+
+.mis-eventos {
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-right: 15px;
+}
+
+.avatar-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background-color: #FFAB73;
+    font-weight: bold;
+    color: #9C541A; /* Color de texto "US" */
+}
