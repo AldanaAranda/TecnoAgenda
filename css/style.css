@@ -88,22 +88,41 @@ body{
     color: #3ABEFF;
 }
 
-.search-wrapper {
-    position: relative;
-    width: 250px;
-}
-
 .form-control {
     border-radius: 20px;
     padding-right: 40px;
 }
 
-.search-icon {
+.form-select{
+    background: none;
+    border: none;
+    color: #fff;
+}
+
+.form-select:focus{
+    outline: none;
+    box-shadow: none;
+}
+
+.opciones{
+    color: #000;
+}
+
+.search-wrapper {
+    position: relative;
+    width: 250px;
+}
+
+.search-button {
     position: absolute;
     top: 50%;
     right: 10px;
     transform: translateY(-50%);
-    color: #6c757d; /* Gris suave */
+    border: none;
+    background: none;
+    color: #6c757d;
+    cursor: pointer;
+    padding: 5px;
 }
 
 .mis-eventos {
