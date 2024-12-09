@@ -1,99 +1,93 @@
-document.getElementById('formularioInicioSesion').addEventListener('submit', function (event) {
+const LOCAL_STORAGE_KEY = "authUser";
+const USUARIO_REGISTRADO = { email: "usuario@ejemplo.com", password: "123456" };
+//Elementos DOM
+const form = document.getElementById("formularioInicioSesion");
+const correoInput = document.getElementById("correo");
+const contrasenaInput = document.getElementById("contrasena");
+const errorCorreo = document.getElementById("errorCorreo");
+const errorContrasena = document.getElementById("errorContrasena");
+const togglePassword = document.getElementById("togglePassword");
+//Eventos
+window.addEventListener("load", inicializarLogin);
+form.addEventListener("submit", manejarEnvioFormulario);
+togglePassword.addEventListener("click", alternarVisibilidadContrasena);
+//Reviso si hay un usuario logueado
+if (localStorage.getItem('authUser')) {
+    window.location.replace('../pages/home.html');
+}
+//Funciones principales
+function inicializarLogin() {
+    localStorage.removeItem(LOCAL_STORAGE_KEY);
+}
+function manejarEnvioFormulario(event) {
     event.preventDefault();
-
-    // valores de los campos
-    const correo = document.getElementById('correo').value.trim();
-    const contrasena = document.getElementById('contrasena').value.trim();
-    const errorCorreo = document.getElementById('errorCorreo');
-    const errorContrasena = document.getElementById('errorContrasena');
-
-    // Limpiar mensajes de error
-    errorCorreo.textContent = '';
-    errorContrasena.textContent = '';
-
-    // Validación de correo y contraseña
+    //Limpiar mensajes de error
+    limpiarErrores();
+    // Obtener valores del formulario
+    const correo = correoInput.value.trim();
+    const contrasena = contrasenaInput.value.trim();
+    //Validar campos
+    if (validarCampos(correo, contrasena)) {
+        autenticarUsuario(correo, contrasena);
+    }
+}
+function autenticarUsuario(correo, contrasena) {
+    if (correo === USUARIO_REGISTRADO.email && contrasena === USUARIO_REGISTRADO.password) {
+        const usuarioData = { email: correo };
+        //Guardar en localStorage para la sesión
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(usuarioData));
+        //Redirigir al home
+        redirigirHome();
+    } else {
+        mostrarError("Correo o contraseña incorrectos.");
+    }
+}
+function redirigirHome() {
+    window.location.replace("../pages/home.html");
+}
+function validarCampos(correo, contrasena) {
     let esValido = true;
-
     if (!correo) {
-        errorCorreo.textContent = 'El correo es obligatorio.';
+        errorCorreo.textContent = "El correo es obligatorio.";
         esValido = false;
     } else if (!/\S+@\S+\.\S+/.test(correo)) {
-        errorCorreo.textContent = 'Por favor, ingresa un correo válido.';
+        errorCorreo.textContent = "Por favor, ingresa un correo válido.";
         esValido = false;
     }
-
     if (!contrasena) {
-        errorContrasena.textContent = 'La contraseña es obligatoria.';
+        errorContrasena.textContent = "La contraseña es obligatoria.";
         esValido = false;
     } else if (contrasena.length < 6) {
-        errorContrasena.textContent = 'La contraseña debe tener al menos 6 caracteres.';
+        errorContrasena.textContent = "La contraseña debe tener al menos 6 caracteres.";
         esValido = false;
     }
-
-    // Simulación de autenticación (reemplazar esto con una API real)
-    const usuarioRegistrado = {
-        email: 'usuario@ejemplo.com',
-        password: '123456'
-    };
-
-    if (esValido) {
-        if (correo === usuarioRegistrado.email && contrasena === usuarioRegistrado.password) {
-            // Guarda en el Local Storage si se selecciona "Recordarme"
-            if (document.getElementById('recordarme').checked) {
-                localStorage.setItem('correo', correo);
-            } else {
-                localStorage.removeItem('correo');
-            }
-
-            // Redirigir al usuario o mostrar un mensaje de éxito
-            window.location.href = "../pages/home.html"
-            //sacarlo y concetarlo al home, lo mismo que abajo
-            // window.location.href = 'pagina_principal.html'; // Redirigir a otra página
-        } else {
-            alert('Correo o contraseña incorrectos');
-            //hacerlo en html
-            //Si condice lo lleva a home.html, sino mostrar error al usuairo (no vale console.log)
-        }
-    }
-});
-
-// Cargar correo guardado en Local Storage al cargar la página
-window.addEventListener('load', function () {
-    const correoGuardado = localStorage.getItem('correo');
-    if (correoGuardado) {
-        document.getElementById('correo').value = correoGuardado;
-        document.getElementById('recordarme').checked = true;
-    }
-});
-
-
-//Verificar si el usuario ya está autenticado
-const user = localStorage.getItem("tecnoagenda");
-if (user) goHome();
-
-function goHome() {
-    window.location.href = '../pages/home.html';
+    return esValido;
 }
-
-function login() {
-    localStorage.setItem("tecnoagenda", JSON.stringify({ name: 'tecnoagenda' }));
-    goHome();
+function limpiarErrores() {
+    errorCorreo.textContent = "";
+    errorContrasena.textContent = "";
 }
+function mostrarError(mensaje) {
+    const errorDiv = document.createElement("div");
+    errorDiv.textContent = mensaje;
+    errorDiv.style.color = "red";
+    errorDiv.style.marginTop = "10px";
+    form.appendChild(errorDiv);
 
-// ... existing code ...
+    setTimeout(() => {
+        errorDiv.remove();
+    }, 3000);
+}
+function alternarVisibilidadContrasena() {
+    const icono = togglePassword.querySelector("i");
 
-//Manejador para mostrar/ocultar contraseña
-document.getElementById('togglePassword').addEventListener('click', function () {
-    const passwordInput = document.getElementById('contrasena');
-    const icon = this.querySelector('i');
-
-    if (passwordInput.type === 'password') {
-        passwordInput.type = 'text';
-        icon.classList.remove('fa-eye');
-        icon.classList.add('fa-eye-slash');
+    if (contrasenaInput.type === "password") {
+        contrasenaInput.type = "text";
+        icono.classList.remove("fa-eye");
+        icono.classList.add("fa-eye-slash");
     } else {
-        passwordInput.type = 'password';
-        icon.classList.remove('fa-eye-slash');
-        icon.classList.add('fa-eye');
+        contrasenaInput.type = "password";
+        icono.classList.remove("fa-eye-slash");
+        icono.classList.add("fa-eye");
     }
-});  
+}

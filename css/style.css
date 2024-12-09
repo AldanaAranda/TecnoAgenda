@@ -1,66 +1,22 @@
-/*LOGIN*/
-body{
-    background-image: url("../assets/images/fondo.jpeg") ;
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Inter", serif;
+    background-image: url("https://i.ibb.co/Z8nsRkk/fondo.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-.bg{
-    background-color: #1E1E1E;
-}
-
-.custom-input {
-    background-color: #333333;
-    border: 1px solid #424242;
-    color: #424242;
-}
-
-.custom-input::placeholder {
-    color: #424242;
-}
-
-.text-danger {
-    font-size: 0.875em;
-}
-
-/*ANIMACION*/
-.animate-from-left {
-    opacity: 0;
-    transform: translateX(-100%);
-    animation: slideInFromLeft 1s ease-out forwards;
-}
-
-.animate-from-right {
-    opacity: 0;
-    transform: translateX(100%);
-    animation: slideInFromRight 1s ease-out forwards;
-}
-
-@keyframes slideInFromLeft {
-    0% {
-        opacity: 0;
-        transform: translateX(-100%);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes slideInFromRight {
-    0% {
-        opacity: 0;
-        transform: translateX(100%);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-/*HOME*/ 
+/********** HOME **********/
+/* NAVBAR */
 .navbar {
-    background-color: #162859; /* Fondo azul */
+    background-color: #162859;
 }
 
 .navbar-brand {
@@ -78,6 +34,16 @@ body{
     margin-right: 8px;
 }
 
+.navbar-toggler:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.bi-list {
+    color: white;
+    font-size: 30px;
+}
+
 .nav-link {
     color: white;
     font-size: 1rem;
@@ -93,18 +59,20 @@ body{
     padding-right: 40px;
 }
 
-.form-select{
+.form-select {
     background: none;
     border: none;
     color: #fff;
+    max-width: 300px;
 }
 
-.form-select:focus{
+.form-select:focus {
     outline: none;
     box-shadow: none;
 }
 
-.opciones{
+.opcionesUbicacion,
+.opciones {
     color: #000;
 }
 
@@ -125,13 +93,6 @@ body{
     padding: 5px;
 }
 
-.mis-eventos {
-    color: white;
-    font-weight: bold;
-    font-size: 1rem;
-    margin-right: 15px;
-}
-
 .avatar-circle {
     display: flex;
     align-items: center;
@@ -141,5 +102,153 @@ body{
     height: 40px;
     background-color: #FFAB73;
     font-weight: bold;
-    color: #9C541A; /* Color de texto "US" */
+    color: #9C541A;
+}
+
+/* CAROUSEL */
+.carousel {
+    max-height: 700px;
+    overflow: hidden;
+    margin-top: calc(62px);
+}
+
+.carousel img {
+    height: auto;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+/* CARDS EVENTOS */
+.evento-imagen {
+    width: 65px;
+    height: 65px;
+    object-fit: cover;
+}
+
+.btn-brand {
+    background-color: #162859;
+    color: white;
+}
+
+.btn-brand:hover {
+    background-color: #162859;
+    color: white;
+}
+
+/* FOOTER */
+.footer {
+    background-color: #02172d;
+    color: #fff;
+    padding: 40px 0;
+}
+
+.footer-linea {
+    height: 4px;
+    background-color: #291a9e;
+    margin-bottom: 20px;
+}
+
+.contact-info p {
+    margin: 0px;
+}
+
+.contact-form h5 {
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.contact-form .form-control {
+    background-color: #3a1e1e;
+    border: none;
+    color: #0032b0;
+}
+
+.contact-form .form-control::placeholder {
+    color: #000000;
+}
+
+.contact-form .form-control:focus {
+    background-color: #f7f7f7;
+    color: #030303;
+    outline: none;
+    box-shadow: none;
+}
+
+.contact-form button {
+    background-color: #064469;
+    border: none;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: #ad1457;
+    color: #000000;
+}
+
+.contact-form .form-control {
+    background-color: #ffffff;
+    border: none;
+    color: #000000;
+    margin-bottom: 15px;
+}
+
+.creadoras {
+    margin-top: 40px;
+}
+
+.creadoras a {
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.creadoras a:hover {
+    color: #ad1457;
+}
+
+/********** LOGIN **********/
+.text-danger {
+    font-size: 0.875em;
+}
+
+/********** ANIMACION **********/
+
+.animate-from-left {
+    opacity: 0;
+    transform: translateX(-100%);
+    animation: slideInFromLeft 1s ease-out forwards;
+}
+
+.animate-from-right {
+    opacity: 0;
+    transform: translateX(100%);
+    animation: slideInFromRight 1s ease-out forwards;
+}
+
+@keyframes slideInFromLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromRight {
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
