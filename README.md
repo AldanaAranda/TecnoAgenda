@@ -1,4 +1,6 @@
-# ![Tecno Agenda Logo](https://i.ibb.co/sPmGx6r/logo.png)  
+<p align="center">
+  <img src="https://i.ibb.co/sPmGx6r/logo.png" width="200"/>
+</p>
 # TecnoAgenda  
 
 🌟 **TecnoAgenda** es una plataforma educativa que acerca la tecnología a todas las personas mediante eventos y talleres interactivos. Promovemos la inclusión y el aprendizaje como herramientas para el cambio social.  
@@ -19,4 +21,5 @@
 - 📅 Ernestina Chandia
 
 ## 🔗 **Enlace a la página**  
-[Visita Tecno Agenda aquí](https://tecno-agenda.vercel.app/)  
+Se parte de Tecno Agenda y descubrí que la tecnología no tiene que ser complicada, inalcanzable o elitista. ¡Es para cualquiera que se anime a aprender! 🙌✨
+[Se parte de Tecno Agenda aquí](https://tecno-agenda.vercel.app/)  
